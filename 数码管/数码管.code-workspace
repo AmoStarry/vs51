@@ -19,7 +19,8 @@
             "*.c++": "cpp",
             "*.cpp": "cpp",
             "*.cxx": "cpp",
-            "*.cc": "cpp"
+            "*.cc": "cpp",
+            "REG52.H": "cpp"
         },
         "files.autoGuessEncoding": true,
         "EIDE.ARM.Option.AutoGenerateRTE_Components": false,
