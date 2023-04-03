@@ -12,6 +12,7 @@
 #include <reg52.h>
 #include <stdio.h>
 
+
 void delay_100ms(); //@12MHz
 
 void main()
