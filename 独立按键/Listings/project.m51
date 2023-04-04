@@ -1,9 +1,9 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        04/04/2023  12:42:50  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/04/2023  12:54:12  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
-D:\GONGZUO RJ\KEIL5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\key.obj TO .\Objects\project PRINT (.\Listings\pro
->> ject.m51) RAMSIZE (256)
+D:\GONGZUO RJ\KEIL5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\key.obj, .\Objects\main.obj TO .\Objects\project P
+>> RINT (.\Listings\project.m51) RAMSIZE (256)
 
 
 MEMORY MODEL: SMALL
@@ -12,7 +12,14 @@ MEMORY MODEL: SMALL
 INPUT MODULES INCLUDED:
   .\Objects\STARTUP.obj (?C_STARTUP)
   .\Objects\key.obj (KEY)
-  D:\GONGZUO RJ\KEIL5\C51\LIB\C51S.LIB (?C_INIT)
+  .\Objects\main.obj (MAIN)
+  D:\GONGZUO RJ\KEIL5\C51\LIB\C51S.LIB (PRINTF)
+  D:\GONGZUO RJ\KEIL5\C51\LIB\C51S.LIB (?C?CLDPTR)
+  D:\GONGZUO RJ\KEIL5\C51\LIB\C51S.LIB (?C?CLDOPTR)
+  D:\GONGZUO RJ\KEIL5\C51\LIB\C51S.LIB (?C?CSTPTR)
+  D:\GONGZUO RJ\KEIL5\C51\LIB\C51S.LIB (?C?PLDIIDATA)
+  D:\GONGZUO RJ\KEIL5\C51\LIB\C51S.LIB (?C?CCASE)
+  D:\GONGZUO RJ\KEIL5\C51\LIB\C51S.LIB (PUTCHAR)
 
 
 LINK MAP OF MODULE:  .\Objects\project (?C_STARTUP)
@@ -23,30 +30,49 @@ LINK MAP OF MODULE:  .\Objects\project (?C_STARTUP)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            DATA    0008H     0001H     UNIT         ?DT?KEY?KEY
-            IDATA   0009H     0001H     UNIT         ?STACK
+            DATA    0008H     0014H     UNIT         _DATA_GROUP_
+                    001CH     0004H                  *** GAP ***
+            BIT     0020H.0   0001H.1   UNIT         _BIT_GROUP_
+                    0021H.1   0000H.7                *** GAP ***
+            IDATA   0022H     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
-            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
-            CODE    008FH     0061H     UNIT         ?PR?KEY?KEY
-            CODE    00F0H     0001H     UNIT         ?C_INITSEG
+            CODE    0003H     035CH     UNIT         ?PR?PRINTF?PRINTF
+            CODE    035FH     008EH     UNIT         ?C?LIB_CODE
+            CODE    03EDH     0061H     UNIT         ?PR?KEY?KEY
+            CODE    044EH     0027H     UNIT         ?PR?PUTCHAR?PUTCHAR
+            CODE    0475H     0010H     UNIT         ?PR?MAIN?MAIN
+            CODE    0485H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0491H     0003H     UNIT         ?CO?MAIN
 
 
 
 OVERLAY MAP OF MODULE:   .\Objects\project (?C_STARTUP)
 
 
-SEGMENT
-  +--> CALLED SEGMENT
----------------------
-?C_C51STARTUP
-  +--> ?C_INITSEG
+SEGMENT                           BIT_GROUP          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH     START    LENGTH
+------------------------------------------------------------------
+?C_C51STARTUP                  -----    -----      -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                  -----    -----      -----    -----
+  +--> ?PR?KEY?KEY
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/04/2023  12:54:12  PAGE 2
+
+
+  +--> ?CO?MAIN
+  +--> ?PR?PRINTF?PRINTF
+
+?PR?KEY?KEY                    -----    -----      0008H    0001H
+
+?PR?PRINTF?PRINTF              0020H.0  0001H.1    0008H    0014H
+  +--> ?PR?PUTCHAR?PUTCHAR
 
 
 
 UNRESOLVED EXTERNAL SYMBOLS:
-   MAIN
    _DELAY
 
 
@@ -57,11 +83,8 @@ SYMBOL TABLE OF MODULE:  .\Objects\project (?C_STARTUP)
   ----------------------------------
 
   -------         MODULE        ?C_STARTUP
-  C:0003H         SEGMENT       ?C_C51STARTUP
-  I:0009H         SEGMENT       ?STACK
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/04/2023  12:42:50  PAGE 2
-
-
+  C:0485H         SEGMENT       ?C_C51STARTUP
+  I:0022H         SEGMENT       ?STACK
   C:0000H         PUBLIC        ?C_STARTUP
   D:00E0H         SYMBOL        ACC
   D:00F0H         SYMBOL        B
@@ -70,7 +93,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\project (?C_STARTUP)
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
   N:0080H         SYMBOL        IDATALEN
-  C:0006H         SYMBOL        IDATALOOP
+  C:0488H         SYMBOL        IDATALOOP
   N:0000H         SYMBOL        PBPSTACK
   N:0100H         SYMBOL        PBPSTACKTOP
   N:0000H         SYMBOL        PDATALEN
@@ -79,30 +102,33 @@ SYMBOL TABLE OF MODULE:  .\Objects\project (?C_STARTUP)
   N:0000H         SYMBOL        PPAGEENABLE
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
-  C:0003H         SYMBOL        STARTUP1
+  C:0485H         SYMBOL        STARTUP1
   N:0000H         SYMBOL        XBPSTACK
   N:0000H         SYMBOL        XBPSTACKTOP
   N:0000H         SYMBOL        XDATALEN
   N:0000H         SYMBOL        XDATASTART
   C:0000H         LINE#         126
-  C:0003H         LINE#         133
-  C:0005H         LINE#         134
-  C:0006H         LINE#         135
-  C:0007H         LINE#         136
-  C:0009H         LINE#         185
-  C:000CH         LINE#         196
+  C:0485H         LINE#         133
+  C:0487H         LINE#         134
+  C:0488H         LINE#         135
+  C:0489H         LINE#         136
+  C:048BH         LINE#         185
+  C:048EH         LINE#         196
   -------         ENDMOD        ?C_STARTUP
 
   -------         MODULE        KEY
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0080H         PUBLIC        P0
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/04/2023  12:54:12  PAGE 3
+
+
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
   D:00E8H         PUBLIC        P4
   D:00A8H         PUBLIC        IE
   D:00B8H         PUBLIC        IP
-  C:008FH         PUBLIC        Key
+  C:03EDH         PUBLIC        Key
   B:00B0H.0       PUBLIC        P30
   D:0098H         PUBLIC        SCON
   B:00B0H.1       PUBLIC        P31
@@ -115,23 +141,81 @@ SYMBOL TABLE OF MODULE:  .\Objects\project (?C_STARTUP)
   -------         DO            
   D:0008H         SYMBOL        KeyNumber
   -------         ENDDO         
-  C:008FH         LINE#         13
-  C:008FH         LINE#         14
-  C:008FH         LINE#         15
-  C:0092H         LINE#         17
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/04/2023  12:42:50  PAGE 3
-
-
-  C:00A8H         LINE#         18
-  C:00BFH         LINE#         19
-  C:00D6H         LINE#         20
-  C:00EDH         LINE#         22
-  C:00EFH         LINE#         23
+  C:03EDH         LINE#         13
+  C:03EDH         LINE#         14
+  C:03EDH         LINE#         15
+  C:03F0H         LINE#         17
+  C:0406H         LINE#         18
+  C:041DH         LINE#         19
+  C:0434H         LINE#         20
+  C:044BH         LINE#         22
+  C:044DH         LINE#         23
   -------         ENDPROC       KEY
   -------         ENDMOD        KEY
 
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?KEY?KEY
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00E8H         PUBLIC        P4
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0475H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  -------         DO            
+  D:0007H         SYMBOL        KeyNum
+  -------         ENDDO         
+  C:0475H         LINE#         5
+  C:0475H         LINE#         6
+  C:0475H         LINE#         7
+  C:0477H         LINE#         8
+  C:047AH         LINE#         9
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/04/2023  12:54:12  PAGE 4
+
+
+  -------         MODULE        PRINTF
+  D:0008H         PUBLIC        ?_PRINTF517?BYTE
+  D:0008H         PUBLIC        ?_PRINTF?BYTE
+  D:0008H         PUBLIC        ?_SPRINTF517?BYTE
+  D:0008H         PUBLIC        ?_SPRINTF?BYTE
+  C:0065H         PUBLIC        _PRINTF
+  C:0065H         PUBLIC        _PRINTF517
+  C:005FH         PUBLIC        _SPRINTF
+  C:005FH         PUBLIC        _SPRINTF517
+  -------         ENDMOD        PRINTF
+
+  -------         MODULE        ?C?CLDPTR
+  C:035FH         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+  -------         MODULE        ?C?CLDOPTR
+  C:0378H         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+  -------         MODULE        ?C?CSTPTR
+  C:03A5H         PUBLIC        ?C?CSTPTR
+  -------         ENDMOD        ?C?CSTPTR
+
+  -------         MODULE        ?C?PLDIIDATA
+  C:03B7H         PUBLIC        ?C?PLDIIDATA
+  -------         ENDMOD        ?C?PLDIIDATA
+
+  -------         MODULE        ?C?CCASE
+  C:03C7H         PUBLIC        ?C?CCASE
+  -------         ENDMOD        ?C?CCASE
+
+  -------         MODULE        PUTCHAR
+  C:044EH         PUBLIC        _PUTCHAR
+  -------         ENDMOD        PUTCHAR
 
 *** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
     SYMBOL:  _DELAY
@@ -140,54 +224,45 @@ SYMBOL TABLE OF MODULE:  .\Objects\project (?C_STARTUP)
 *** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
     SYMBOL:  _DELAY
     MODULE:  .\Objects\key.obj (KEY)
-    ADDRESS: 0099H
+    ADDRESS: 03F7H
 
 *** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
     SYMBOL:  _DELAY
     MODULE:  .\Objects\key.obj (KEY)
-    ADDRESS: 00A3H
+    ADDRESS: 0401H
 
 *** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
     SYMBOL:  _DELAY
     MODULE:  .\Objects\key.obj (KEY)
-    ADDRESS: 00B0H
+    ADDRESS: 040EH
 
 *** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
     SYMBOL:  _DELAY
     MODULE:  .\Objects\key.obj (KEY)
-    ADDRESS: 00BAH
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/04/2023  12:54:12  PAGE 5
+
+
+    ADDRESS: 0418H
 
 *** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
     SYMBOL:  _DELAY
     MODULE:  .\Objects\key.obj (KEY)
-    ADDRESS: 00C7H
+    ADDRESS: 0425H
 
 *** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
     SYMBOL:  _DELAY
     MODULE:  .\Objects\key.obj (KEY)
-    ADDRESS: 00D1H
+    ADDRESS: 042FH
 
 *** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
     SYMBOL:  _DELAY
     MODULE:  .\Objects\key.obj (KEY)
-    ADDRESS: 00DEH
+    ADDRESS: 043CH
 
 *** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
     SYMBOL:  _DELAY
     MODULE:  .\Objects\key.obj (KEY)
-    ADDRESS: 00E8H
+    ADDRESS: 0446H
 
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  MAIN
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/04/2023  12:42:50  PAGE 4
-
-
-    MODULE:  D:\GONGZUO RJ\KEIL5\C51\LIB\C51S.LIB (?C_INIT)
-
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  MAIN
-    MODULE:  D:\GONGZUO RJ\KEIL5\C51\LIB\C51S.LIB (?C_INIT)
-    ADDRESS: 0010H
-
-Program Size: data=10.0 xdata=0 code=241
-LINK/LOCATE RUN COMPLETE.  12 WARNING(S),  0 ERROR(S)
+Program Size: data=30.1 xdata=0 code=1172
+LINK/LOCATE RUN COMPLETE.  9 WARNING(S),  0 ERROR(S)
