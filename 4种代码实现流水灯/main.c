@@ -73,7 +73,7 @@
 
 
 // //方法4：把各个LED亮灭情况写入数组
-#define  LED  P0
+#define  LED  P2
 int main()
 {
     while(1)
