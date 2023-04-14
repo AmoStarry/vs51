@@ -1,6 +1,0 @@
-".\Objects\STARTUP.obj",
-".\Objects\Delay.obj",
-".\Objects\main.obj",
-".\Objects\Suma.obj" 
-TO ".\Objects\project" 
-PRINT(".\Listings\project.m51")

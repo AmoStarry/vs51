@@ -3,12 +3,12 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: ¶ÃVision V5.18.0.0
-Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: 1 1524730261@qq.com, 1, LIC=HN93N-Y11LQ-83VMD-8M16X-22WWP-2ALZE
+IDE-Version: ¶ÃVision V5.14.2
+Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 1524730261@qq.com, 1, LIC=YKA0P-MUWIL-NWI21-CRPGE-YTS5Z-3J3WH
  
 Tool Versions:
-Toolchain:       PK51 Prof. Developers Kit  Version: 9.54
+Toolchain:       A51 Macro Assembler Kit  Version: 9.54
 Toolchain Path:  D:\GongZuo rj\keil5\C51\BIN
 C Compiler:      C51.exe V9.54
 Assembler:       A51.exe V8.02c
@@ -19,12 +19,13 @@ CPU DLL:         S8051.DLL V3.100.0.0
 Dialog DLL:      DP51.DLL V2.62.0.1 
 <h2>Project:</h2>
 D:\ZLK\51\vs51\ ˝¬Îπ‹œ‘ æ\project.uvproj
-Project File Date:  04/04/2023
+Project File Date:  03/27/2023
 
 <h2>Output:</h2>
 Rebuild target 'Target 1'
 assembling STARTUP.A51...
 compiling main.c...
+main.c(1): warning C500: MISSING DEVICE (R003(0): SECURITY KEY NOT FOUND)
 Delay.h(1): warning C315: unknown #directive 'ifndef__DELAY_H__'
 Delay.h(2): warning C315: unknown #directive 'define__DELAY_H__'
 Delay.h(6): warning C312: misplaced endif control
@@ -32,42 +33,16 @@ Suma.h(1): warning C315: unknown #directive 'ifndef__SUMA_H__'
 Suma.h(2): warning C315: unknown #directive 'define__SUMA_H__'
 Suma.h(6): warning C312: misplaced endif control
 compiling Suma.c...
+Suma.c(1): warning C500: MISSING DEVICE (R003(0): SECURITY KEY NOT FOUND)
 Delay.h(1): warning C315: unknown #directive 'ifndef__DELAY_H__'
 Delay.h(2): warning C315: unknown #directive 'define__DELAY_H__'
 Delay.h(6): warning C312: misplaced endif control
 compiling Delay.c...
+Delay.c(1): warning C500: MISSING DEVICE (R003(0): SECURITY KEY NOT FOUND)
 linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SUMA1?SUMA
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DELAY?DELAY
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  _SUMA
-    MODULE:  .\Objects\main.obj (MAIN)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  _SUMA
-    MODULE:  .\Objects\main.obj (MAIN)
-    ADDRESS: 00F8H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  _SUMA
-    MODULE:  .\Objects\main.obj (MAIN)
-    ADDRESS: 0101H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  _SUMA
-    MODULE:  .\Objects\main.obj (MAIN)
-    ADDRESS: 010AH
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  _SUMA
-    MODULE:  .\Objects\main.obj (MAIN)
-    ADDRESS: 0113H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  _SUMA
-    MODULE:  .\Objects\main.obj (MAIN)
-    ADDRESS: 011CH
-Program Size: data=12.0 xdata=0 code=314
+Program Size: data=19.0 xdata=0 code=288
 creating hex file from ".\Objects\project"...
-".\Objects\project" - 0 Error(s), 17 Warning(s).
-Build Time Elapsed:  00:00:00
+".\Objects\project" - 0 Error(s), 12 Warning(s).
 </pre>
 </body>
 </html>
