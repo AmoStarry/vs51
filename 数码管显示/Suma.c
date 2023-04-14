@@ -7,12 +7,12 @@
 /**
   * @brief  数码管显示
   * @param  Location 一排数码管上要在第几段显示，范围:1~8
-  * @param  Number 要显示的数字，范围：段码表索引范围 0~9
+  * @param  Number 要显示的图案 ：开头 中间 结尾
   * @retval 无
   */
   
-unsigned char dusuan[]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f};
-void Suma(unsigned char Locarion,number)
+unsigned char dusuan[]={0x58,0x49,0x75};
+void Suma1(unsigned char Locarion,number)
 {
 	
     switch(Locarion) //位码输出
@@ -27,6 +27,8 @@ void Suma(unsigned char Locarion,number)
 		case(8):LSA=1;LSB=1;LSC=1; break;//显示第8位
     }
     P0=dusuan[number];  //段选输出
-    Delay(1);           //显示一段时间
-    P0=0x00;            //段码清0,消影 
+    //Delay(1);           //显示一段时间
+   // P0=0xff;            //段码清0,消影 
 }
+
+

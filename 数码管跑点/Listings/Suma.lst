@@ -1,0 +1,61 @@
+C51 COMPILER V9.54   SUMA                                                                  04/08/2023 10:14:42 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE SUMA
+OBJECT MODULE PLACED IN .\Objects\Suma.obj
+COMPILER INVOKED BY: D:\GongZuo rj\keil5\C51\BIN\C51.EXE Suma.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\List
+                    -ings\Suma.lst) OBJECT(.\Objects\Suma.obj)
+
+line level    source
+
+   1          #include <REGX51.H>
+   2          #include "Delay.h"
+*** WARNING C315 IN LINE 1 OF Delay.h: unknown #directive 'ifndef__DELAY_H__'
+*** WARNING C315 IN LINE 2 OF Delay.h: unknown #directive 'define__DELAY_H__'
+*** WARNING C312 IN LINE 6 OF Delay.h: misplaced endif control
+   3          #define LSA P2_2  //三八译码器
+   4          #define LSB P2_3
+   5          #define LSC P2_4
+   6          
+   7          /**
+   8            * @brief  数码管显示
+   9            * @param  Location 一排数码管上要在第几段显示，范围:1~8
+  10            * @param  Number 要显示的图案 ：开头 中间 结尾
+  11            * @retval 无
+  12            */
+  13            
+  14          unsigned char dusuan[]={0x01,0x02,0x40,0x10,0x08};
+  15          void Suma(unsigned char Locarion,number)
+  16          {
+  17   1              
+  18   1          switch(Locarion) //位码输出
+  19   1          {
+  20   2                      case(1):LSA=0;LSB=0;LSC=0; break;//显示第1位   
+  21   2                      case(2):LSA=1;LSB=0;LSC=0; break;//显示第2位
+  22   2                      case(3):LSA=0;LSB=1;LSC=0; break;//显示第3位
+  23   2                      case(4):LSA=1;LSB=1;LSC=0; break;//显示第4位
+  24   2                      case(5):LSA=0;LSB=0;LSC=1; break;//显示第5位
+  25   2                      case(6):LSA=1;LSB=0;LSC=1; break;//显示第6位
+  26   2                      case(7):LSA=0;LSB=1;LSC=1; break;//显示第7位
+  27   2                      case(8):LSA=1;LSB=1;LSC=1; break;//显示第8位
+  28   2          }
+  29   1          P0=dusuan[number];  //段选输出
+  30   1          Delay(300);           //显示一段时间
+  31   1          P0=0x00;            //段码清0,消影 
+  32   1      }
+  33          
+  34          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    109    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      5    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  3 WARNING(S),  0 ERROR(S)
