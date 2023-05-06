@@ -1,0 +1,93 @@
+C51 COMPILER V9.54   KEIL                                                                  04/12/2023 22:28:11 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE KEIL
+OBJECT MODULE PLACED IN .\Objects\keil.obj
+COMPILER INVOKED BY: D:\SoftwareInstall\MDK_51\C51\BIN\C51.EXE keil.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(
+                    -.\Listings\keil.lst) TABS(2) OBJECT(.\Objects\keil.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          sbit ADDA=P2^0;
+   3          sbit ADDB=P2^1;
+   4          sbit ADDC=P2^2;
+   5          sbit OE=P2^3;
+   6          sbit START=P2^4;
+   7          sbit ALE=P2^5;
+   8          sbit EOC=P2^6;
+   9          unsigned char num=0;
+  10          unsigned char code table[]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x00};
+  11          unsigned char distable[4]={0,1,2,3};
+  12          unsigned char dispcount;
+  13          void delay(unsigned int ms)
+  14          {
+  15   1        unsigned char i;
+  16   1        for(;ms>0;ms--)
+  17   1        for(i=0;i<125;i++);
+  18   1      }
+  19          void LED_display()
+  20          {
+  21   1        unsigned char i,a=0x01;
+  22   1        for(i=0;i<4;i++)
+  23   1        {
+  24   2          P1=~table[distable[i]];
+  25   2          if(i==0)
+  26   2          P1=~table[distable[i]] & 0x7F;
+  27   2          P3=~a;
+  28   2          delay(1);
+  29   2          P3=0xFF;
+  30   2          a<<=1;
+  31   2        }
+  32   1      }
+  33          void calculate(unsigned char num)
+  34          {
+  35   1        long int i;
+  36   1        i=num*196;
+  37   1        distable[0]=i/10000;
+  38   1        i=i%10000;
+  39   1        distable[1]=i/1000;
+  40   1        i=i%1000;
+  41   1        distable[2]=i/100;
+  42   1        i=i%100;
+  43   1        distable[3]=i/10;
+  44   1      }
+  45          void main(void)
+  46          {
+  47   1        P0=0xff;
+  48   1        P2=0x00;
+  49   1        EOC=1;
+  50   1        ADDA=1;
+  51   1        ADDB=1;
+  52   1        ADDC=0;
+  53   1        ALE=1;
+  54   1        while(1)
+C51 COMPILER V9.54   KEIL                                                                  04/12/2023 22:28:11 PAGE 2   
+
+  55   1        {
+  56   2          START=0;
+  57   2          START=1;
+  58   2          START=0;
+  59   2          delay(1);
+  60   2          OE=1;
+  61   2          delay(1);
+  62   2          num=P0;
+  63   2          OE=0;
+  64   2          calculate(num);
+  65   2          LED_display();
+  66   2        }
+  67   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    284    ----
+   CONSTANT SIZE    =     11    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      6       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

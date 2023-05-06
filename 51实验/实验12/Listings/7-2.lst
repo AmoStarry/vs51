@@ -1,0 +1,49 @@
+C51 COMPILER V9.54   7_2                                                                   04/06/2023 23:21:18 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE 7_2
+OBJECT MODULE PLACED IN .\Objects\7-2.obj
+COMPILER INVOKED BY: D:\SoftwareInstall\MDK_51\C51\BIN\C51.EXE 7-2.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.
+                    -\Listings\7-2.lst) TABS(2) OBJECT(.\Objects\7-2.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          unsigned char xdata* pdac0832= 0xFEFF;
+   3          unsigned char temp=0;
+   4          #define VM 0x80
+   5          ////调整宏VM定义，可以改变幅度和频率
+   6          void delay(unsigned int ms)
+   7          {
+   8   1      unsigned char i;
+   9   1      for(;ms> 0; ms--)
+  10   1      for(i= 0; i< 125; i++);
+  11   1      }
+  12          void main()
+  13          {
+  14   1        while(1)
+  15   1        {
+  16   2          * pdac0832= temp;
+  17   2          delay(20);
+  18   2          ////调整延时时间可以改变频率
+  19   2          temp++;
+  20   2          if( temp == VM)
+  21   2          {
+  22   3            temp= 0;
+  23   3          }
+  24   2        }
+  25   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     51    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

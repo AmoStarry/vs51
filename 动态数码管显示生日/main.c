@@ -3,7 +3,7 @@
 #define ds P3 
 
 //数码管段码表
-unsigned char NixieTable[]={0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
+unsigned char NixieTable[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90};
 
 //延时子函数
 void Delay(unsigned int xms)
@@ -25,31 +25,34 @@ void Nixie(unsigned char Location,Number)
 {
 	switch(Location)		//位码输出
 	{
-		case 0:ws=NixieTable[0];break;
-		case 1:ws=NixieTable[1];break;
-		case 2:ws=NixieTable[2];break;
-		case 3:ws=NixieTable[3];break;
-		case 4:ws=NixieTable[4];break;
-		case 5:ws=NixieTable[5];break;
-		case 6:ws=NixieTable[6];break;
-		case 7:ws=NixieTable[7];break;
-		case 8:ws=NixieTable[8];break;
-		case 9:ws=NixieTable[9];break;
+		case 1:P1_0 = 1;break;
+		case 2:P1_1 = 1;break;
+		case 3:P1_2 = 1;break;
+		case 4:P1_3 = 1;break;
+		case 5:P1_4 = 1;break;
+		case 6:P1_5 = 1;break;
+		case 7:P1_6 = 1;break;
+		case 8:P1_7 = 1;break;
 	}
 	ds=NixieTable[Number];	//段码输出
-	Delay(1);				//显示一段时间
-	ds=0x00;				//段码清0，消影
+	Delay(1000);				//显示一段时间
+	ds=0xff;				//段码清0，消影
 }
 
 void main()
 {
 	while(1)
 	{
-		Nixie(1,1);		//在数码管的第1位置显示1
-//		Delay(20);
-		Nixie(2,2);		//在数码管的第2位置显示2
-//		Delay(20);
-		Nixie(3,3);		//在数码管的第3位置显示3
+		Nixie(1,2);		//在数码管的第1位置显示1
+		Delay(200);
+		Nixie(2,0);		//在数码管的第2位置显示2
+		Delay(200);
+		Nixie(3,0);		//在数码管的第3位置显示3
+		Nixie(4,1);
+		Nixie(5,1);
+		Nixie(6,2);
+		Nixie(7,2);
+		Nixie(8,9);	
 //		Delay(20);
 	}
 }
