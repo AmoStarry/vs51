@@ -1,10 +1,10 @@
-C51 COMPILER V9.54   XITI1                                                                 04/12/2023 08:04:44 PAGE 1   
+C51 COMPILER V9.60.7.0   XITI1                                                             05/08/2023 00:09:52 PAGE 1   
 
 
-C51 COMPILER V9.54, COMPILATION OF MODULE XITI1
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE XITI1
 OBJECT MODULE PLACED IN .\Objects\xiti1.obj
-COMPILER INVOKED BY: D:\SoftwareInstall\MDK_51\C51\BIN\C51.EXE xiti1.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT
-                    -(.\Listings\xiti1.lst) TABS(2) OBJECT(.\Objects\xiti1.obj)
+COMPILER INVOKED BY: D:\rujian\keil5\C51\BIN\C51.EXE xiti1.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\xiti1.lst) TABS(2) OBJECT(.\Objects\xiti1.obj)
 
 line level    source
 
