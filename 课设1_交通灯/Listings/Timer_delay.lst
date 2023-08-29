@@ -1,0 +1,40 @@
+C51 COMPILER V9.60.7.0   TIMER_DELAY                                                       08/29/2023 16:51:40 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE TIMER_DELAY
+OBJECT MODULE PLACED IN .\Objects\Timer_delay.obj
+COMPILER INVOKED BY: D:\rujian\keil5\C51\BIN\C51.EXE Timer_delay.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\L
+                    -istings\Timer_delay.lst) TABS(5) OBJECT(.\Objects\Timer_delay.obj)
+
+line level    source
+
+   1          #include <STC89C5xRC.H>
+*** WARNING C318 IN LINE 1 OF Timer_delay.c: can't open file 'STC89C5xRC.H'
+   2          #include "Timer0.h"
+   3          
+   4          void Timer_delay(unsigned int ms)
+   5          {
+   6   1           unsigned int count;
+   7   1           bit flag = 0;
+   8   1           count = ms; //??????
+   9   1           flag = 1;
+  10   1           while(flag);//??????,?????0,??whil??
+  11   1      }
+  12          
+  13          void Timer0_Routine() interrupt 1
+  14          {
+  15   1           unsigned int count;
+  16   1           bit flag = 0;
+  17   1           //static unsigned int T0Count;
+  18   1           TL0 = 0x18;         //??????  //??1 ms????
+*** ERROR C202 IN LINE 18 OF Timer_delay.c: 'TL0': undefined identifier
+  19   1           TH0 = 0xFC;         //??????
+*** ERROR C202 IN LINE 19 OF Timer_delay.c: 'TH0': undefined identifier
+  20   1           if(flag)
+  21   1           {
+  22   2                if(--count == 0)//?????1,?????????
+  23   2                     flag = 0;       //????0,????
+  24   2           }
+  25   1      }
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  2 ERROR(S)

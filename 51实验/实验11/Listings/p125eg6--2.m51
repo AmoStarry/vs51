@@ -1,9 +1,9 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        04/13/2023  16:36:51  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    05/12/2023  10:28:57  PAGE 1
 
 
-BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
-D:\KEIL5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\p125eg6--2.obj TO .\Objects\p125eg6--2 PRINT (.\Listings\p125
->> eg6--2.m51)
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+D:\RUJIAN\KEIL5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\p125eg6--2.obj TO .\Objects\p125eg6--2 PRINT (.\Listin
+>> gs\p125eg6--2.m51)
 
 
 MEMORY MODEL: SMALL
@@ -12,7 +12,7 @@ MEMORY MODEL: SMALL
 INPUT MODULES INCLUDED:
   .\Objects\STARTUP.obj (?C_STARTUP)
   .\Objects\p125eg6--2.obj (P125EG6__2)
-  D:\KEIL5\C51\LIB\C51S.LIB (?C_INIT)
+  D:\RUJIAN\KEIL5\C51\LIB\C51S.LIB (?C_INIT)
 
 
 LINK MAP OF MODULE:  .\Objects\p125eg6--2 (?C_STARTUP)
@@ -34,7 +34,7 @@ LINK MAP OF MODULE:  .\Objects\p125eg6--2 (?C_STARTUP)
             CODE    011EH     001BH     UNIT         ?PR?_DELAY?P125EG6__2
             CODE    0139H     0012H     UNIT         ?PR?INIT?P125EG6__2
             CODE    014BH     000DH     UNIT         ?C_INITSEG
-            CODE    0158H     0007H     UNIT         ?PR?MAIN?P125EG6__2
+            CODE    0158H     0006H     UNIT         ?PR?MAIN?P125EG6__2
 
 
 
@@ -59,7 +59,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\p125eg6--2 (?C_STARTUP)
   VALUE           TYPE          NAME
   ----------------------------------
 
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/13/2023  16:36:51  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  05/12/2023  10:28:57  PAGE 2
 
 
   -------         MODULE        ?C_STARTUP
@@ -119,7 +119,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\p125eg6--2 (?C_STARTUP)
   C:0139H         LINE#         9
   C:0139H         LINE#         10
   C:013CH         LINE#         11
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/13/2023  16:36:51  PAGE 3
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  05/12/2023  10:28:57  PAGE 3
 
 
   C:013FH         LINE#         12
@@ -139,8 +139,6 @@ SYMBOL TABLE OF MODULE:  .\Objects\p125eg6--2 (?C_STARTUP)
   C:015BH         LINE#         24
   C:015BH         LINE#         25
   C:015BH         LINE#         26
-  C:015EH         LINE#         27
-  C:015EH         LINE#         28
   -------         ENDPROC       MAIN
   C:011EH         SYMBOL        L?0057
   -------         PROC          L?0056
@@ -179,11 +177,11 @@ SYMBOL TABLE OF MODULE:  .\Objects\p125eg6--2 (?C_STARTUP)
   C:00FEH         LINE#         54
   C:0101H         LINE#         55
   C:0103H         LINE#         56
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/13/2023  16:36:51  PAGE 4
-
-
   C:0107H         LINE#         57
   C:010AH         LINE#         58
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  05/12/2023  10:28:57  PAGE 4
+
+
   C:010DH         LINE#         59
   C:0110H         LINE#         60
   C:0112H         LINE#         61
@@ -233,5 +231,5 @@ SYMBOL TABLE OF MODULE:  .\Objects\p125eg6--2 (?C_STARTUP)
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?SEND?P125EG6__2
 
-Program Size: data=20.0 xdata=0 code=351
+Program Size: data=20.0 xdata=0 code=350
 LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

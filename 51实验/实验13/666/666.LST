@@ -1,0 +1,42 @@
+C51 COMPILER V9.01   666                                                                   01/01/2007 00:58:57 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE 666
+OBJECT MODULE PLACED IN 666.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE 666.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          unsigned char dat_adc;
+   3          unsigned char xdata*pad_0808;
+   4          void main()
+   5          {
+   6   1        EA=1;
+   7   1        EX0=1;
+   8   1        IT0=1;
+   9   1        pad_0808=0x76FF;
+  10   1        *pad_0808=0;
+  11   1        while(1);
+  12   1      }
+  13          voidSER_int0( )interrupt 0
+  14          {
+  15   1        dat_adc=*pad_0808;
+  16   1        P1=dat_adc;
+  17   1        pad_0808=0x76FF;
+  18   1        *pad_0808=0;
+  19   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     60    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

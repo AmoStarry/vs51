@@ -1,0 +1,86 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        01/01/2007  00:58:57  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE 666.obj TO 666
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  666.obj (666)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  666 (666)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?666
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+            CODE    0006H     0026H     UNIT         ?PR?VOIDSER_INT0?666
+            CODE    002CH     0016H     UNIT         ?PR?MAIN?666
+            CODE    0042H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   666 (666)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?666
+
+
+
+SYMBOL TABLE OF MODULE:  666 (666)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        666
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  B:00A8H.7       PUBLIC        EA
+  C:002CH         PUBLIC        main
+  D:0008H         PUBLIC        dat_adc
+  B:00A8H.0       PUBLIC        EX0
+  B:0088H.0       PUBLIC        IT0
+  D:0009H         PUBLIC        pad_0808
+  C:0006H         PUBLIC        voidSER_int0
+BL51 BANKED LINKER/LOCATER V6.22                                                      01/01/2007  00:58:57  PAGE 2
+
+
+  -------         PROC          MAIN
+  C:002CH         LINE#         4
+  C:002CH         LINE#         5
+  C:002CH         LINE#         6
+  C:002EH         LINE#         7
+  C:0030H         LINE#         8
+  C:0032H         LINE#         9
+  C:0038H         LINE#         10
+  C:0040H         LINE#         11
+  -------         ENDPROC       MAIN
+  -------         PROC          VOIDSER_INT0
+  C:0006H         LINE#         13
+  C:000CH         LINE#         15
+  C:0015H         LINE#         16
+  C:0017H         LINE#         17
+  C:001DH         LINE#         18
+  C:0025H         LINE#         19
+  -------         ENDPROC       VOIDSER_INT0
+  -------         ENDMOD        666
+
+Program Size: data=12.0 xdata=0 code=78
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
